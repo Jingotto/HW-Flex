@@ -17,6 +17,27 @@
     text-decoration: none;
     font-size: 30px;
     font-weight: bold;
+    animation: logo-appear 1s linear;
+}
+
+@keyframes logo-appear {
+    0% {
+        transform: translateY(200px);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.2;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .main-nav {
@@ -30,12 +51,33 @@
 .nav-menu {
     display: flex;
     justify-content: space-between;
-    position: relative;
     list-style: none;
     min-width: 490px;
+    animation: nav-menu-appear 1s linear;
+}
+
+@keyframes nav-menu-appear {
+    0% {
+        transform: translateY(200px);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.2;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .nav-menu-item a {
+    position: relative;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
@@ -47,14 +89,23 @@
     color: #f38181;
 }
 
-.nav-menu-item a:hover::after {
+.nav-menu-item a::after {
     position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-50%);
     display: block;
     content: "";
-    width: 50px;
+    width: 100%;
     height: 3px;
     background-color: #f38181;
-    margin-top: 10px;
+    opacity: 0;
+    transition: all 320ms ease-in-out;
+}
+
+.nav-menu-item a:hover::after {
+    opacity: 1;
+    bottom: -10px;
 }
 
 /* FOR ALL SECTION */
@@ -115,30 +166,52 @@
     width: 32px;
     height: 32px;
     background: no-repeat;
+    transition: 0.5s linear;
+}
+
+@keyframes decor-appear {
+    0% {
+        transform: translateY(400px);
+        opacity: 0;
+    }
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .alarm {
     background-image: url(../assets/decoration-img/ALARM.png);
+    animation: decor-appear 1.1s linear
 }
 
 .line-graph {
     background-image: url(../assets/decoration-img/LINE\ GRAPH.png);
+    animation: decor-appear 1.1s linear
 }
 
 .computer {
     background-image: url(../assets/decoration-img/COMPUTER\ _\ OK.png);
+    animation: decor-appear 1.1s linear
 }
 
 .book {
     background-image: url(../assets/decoration-img/BOOK\ 2.png);
+    animation: decor-appear 1.5s linear
 }
 
 .home {
     background-image: url(../assets/decoration-img/HOME.png);
+    animation: decor-appear 1.5s linear
 }
 
 .image {
     background-image: url(../assets/decoration-img/IMAGE.png);
+    animation: decor-appear 1.5s linear
 }
 
 /* TEAM SECTION */
@@ -160,12 +233,9 @@
 }
 
 .team-section-item {
+    text-align: center;
     position: relative;
     background: linear-gradient(180deg, rgb(149, 225, 211) 0px, rgb(149, 225, 211) 470px, rgba(149, 225, 211, 0) 470px, rgba(149, 225, 211, 0) 100%);
-}
-
-.team-section-item p {
-    text-align: center;
 }
 
 .team-name {
@@ -173,6 +243,12 @@
     font-size: 14px;
     color: #333333;
     margin-bottom: 17px;
+    transition: 0.5s linear;
+}
+
+.team-name:hover {
+    transform: scale(1.15);
+    color: rgb(0, 128, 128);
 }
 
 .team-position {
@@ -183,15 +259,6 @@
 }
 
 /* OWERLAY */
-
-.owerlay-wrap:hover  {
-    transform: translate(-10px, -10px);
-    transition: 200ms linear;
-}
-
-.owerlay-wrap:hover .owerlay {
-    display: block;
-}
 
 .owerlay-wrap {
     height: 470px;
@@ -209,12 +276,10 @@
 }
 
 .owerlay-but {
-    position: absolute;
-    top: 207px;
     width: 56px;
     height: 56px;
     background-color: #fce38a;
-    padding: 0;
+    margin: 1px;
     background-repeat: no-repeat;
     background-position: center;
     transition: 200ms linear;
@@ -224,24 +289,31 @@
     background-color: #95e1d3;
 }
 
+.owerlay-wrap:hover {
+    transform: translate(-7px, -7px);
+    transition: 200ms linear;
+}
+
+.owerlay-wrap:hover .owerlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .fb {
     background-image: url(../assets/decoration-img/facebook.png);
-    left: 78px;
 }
 
 .tw {
     background-image: url(../assets/decoration-img/twitter.png);
-    left: 135px;
 }
 
 .pin {
     background-image: url(../assets/decoration-img/pinterest.png);
-    left: 192px;
 }
 
 .ins {
     background-image: url(../assets/decoration-img/instagram.png);
-    left: 249px;
 }
 
 /* FOOTER SECTION */
@@ -287,6 +359,7 @@
     font-size: 15px;
     font-style: italic;
     color: #d2d2d2;
+    outline: none;
 }
 
 /* OTHER */
